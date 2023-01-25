@@ -6,26 +6,55 @@
 
   <div class="order-summary jumbotron">
     <h4>Thank you for your order!</h4>
-    <p>Order total: <%= humanized_money_with_symbol @order.total_cents / 100.0 %></p>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Qty</th>
+          <th>Total</th>
+        </tr>
+
+      </thead>
+      <tbody>
+        <% @line_items.each do |item| %>
+          <tr>
+            <% @products.each do |product| %>
+              <% if item.product_id == product.id %>
+                <td><img src="<%= product.image.tiny.url %>"></td>
+              <% end %>
+            <% end %>
+            <% @products.each do |product| %>
+              <% if item.product_id == product.id %>
+                <td><%= product.name %></td>
+              <% end %>
+            <% end %>
+            <% @products.each do |product| %>
+              <% if item.product_id == product.id %>
+                <td><%= product.description %></td>
+              <% end %>
+            <% end %>
+            <td><%= item.quantity %></td>
+            <td><%= humanized_money_with_symbol item.total_price_cents / 100.0 %></td>
+          </tr>
+        <% end %>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="4">
+            TOTAL:
+          </th>
+          <th>
+            <%= humanized_money_with_symbol @order.total_cents / 100.0 %>
+          </th>
+        </tr>
+      </tfoot>
+    </table>
     <p>Your order confirmation has been sent to <%= @order.email %></p>
   </div>
 
-  <table class="table table-bordered">
-    <thead>
-      <tr>Prod ID</tr>
-      <tr>Qty</tr>
-      <tr>Total</tr>
-    </thead>
-    <tbody>
-      <%= @line_items.each do |item| %>
-      <tr>
-        <td><%= item.product_id %></td>
-        <td><%= item.quantity %></td>
-        <td><%= humanized_money_with_symbol item.total_price_cents / 100.0 %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <!-- <p><%= @products[1].inspect %></p> -->
 
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
 
