@@ -1,0 +1,19 @@
+<tr>
+  <% @products.each do |product| %>
+    <% if item.product_id == product.id %>
+      <td><img src="<%= product.image.tiny.url %>"></td>
+    <% end %>
+  <% end %>
+  <% @products.each do |product| %>
+    <% if item.product_id == product.id %>
+      <td><%= product.name %></td>
+    <% end %>
+  <% end %>
+  <% @products.each do |product| %>
+    <% if item.product_id == product.id %>
+      <td><%= product.description %></td>
+    <% end %>
+  <% end %>
+  <td><%= item.quantity %></td>
+  <td><%= humanized_money_with_symbol item.total_price_cents / 100.0 %></td>
+</tr>
