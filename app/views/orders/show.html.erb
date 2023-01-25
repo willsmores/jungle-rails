@@ -10,7 +10,22 @@
     <p>Your order confirmation has been sent to <%= @order.email %></p>
   </div>
 
-  <p><%= @order.inspect %></p>
+  <table class="table table-bordered">
+    <thead>
+      <tr>Prod ID</tr>
+      <tr>Qty</tr>
+      <tr>Total</tr>
+    </thead>
+    <tbody>
+      <%= @line_items.each do |item| %>
+      <tr>
+        <td><%= item.product_id %></td>
+        <td><%= item.quantity %></td>
+        <td><%= humanized_money_with_symbol item.total_price_cents / 100.0 %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
 
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
 
