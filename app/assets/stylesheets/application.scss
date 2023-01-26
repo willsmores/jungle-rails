@@ -111,3 +111,25 @@ form.button_to {
 .text-danger {
   color: #f38792 !important;
 }
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+
+  article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 75px;
+    border-radius: 0.25em;
+    border: 0.1em solid rgba(0, 130, 29, 0.3);
+    box-shadow: rgba(0, 130, 29, .16) 0px 3px 6px, rgba(0, 130, 29, .23) 0px 3px 6px;
+
+    span {
+      font-size: 75px;
+      color: rgba(0, 130, 29, 0.7);
+      font-weight: 700;
+      font-family: "Montserrat";
+    }
+  }
+}
