@@ -106,6 +106,7 @@ form.button_to {
 
   span {
     color: white;
+    margin-right: 25px;
   }
 
   .login,
@@ -145,6 +146,23 @@ form.button_to {
       color: rgba(0, 130, 29, 0.7);
       font-weight: 700;
       font-family: "Montserrat";
+    }
+  }
+}
+
+.user {
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    input[type=submit] {
+      margin-top: 20px;
+    }
+
+    input[type=text],
+    input[type=password] {
+      margin-bottom: 10px;
     }
   }
 }
