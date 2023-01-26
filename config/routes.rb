@@ -6,8 +6,11 @@ Rails.application.routes.draw do
   root to: 'products#index'
 
   get '/about' => 'about#index'
+
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
+  # get 'users/new'
+  # get 'users/signup'
 
   resources :products, only: [:index, :show]
   resources :categories, only: [:show]
