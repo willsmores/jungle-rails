@@ -5,14 +5,18 @@
   </header>
 
     <div class="stats">
-      <article>
-        <h4>Number of Products: </h4>
-        <span><%= @product_count %></span>
-      </article>
-      <article>
-        <h4>Number of Categories: </h4>
-        <span><%= @category_count %></span>
-      </article>
+      <a href="/admin/products">
+        <article>
+          <h4>Number of Products: </h4>
+          <span><%= @product_count %></span>
+        </article>
+      </a>
+      <a href="/admin/products">
+        <article>
+          <h4>Number of Categories: </h4>
+          <span><%= @category_count %></span>
+        </article>
+      </a>
     </div>
 
 </section>
