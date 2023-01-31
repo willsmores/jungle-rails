@@ -1,9 +1,9 @@
 class User < ApplicationRecord
 
-  def authenticate_with_credentials(email, password)
-    stripped_email = email.strip
+  def self.authenticate_with_credentials(email, password)
+    stripped_email = email.strip.downcase
     
-    @user = User.find_by_email(stripped_email.downcase)
+    @user = User.find_by_email(stripped_email)
 
     if @user && @user.authenticate(password)
       @user
