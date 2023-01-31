@@ -69,4 +69,56 @@ RSpec.describe User, type: :model do
     end
 
   end
+
+  describe '.authenticate_with_credentials' do
+
+    it "is valid when authenticated" do
+
+      user = User.new(first_name: "Steve", last_name: "Willsmore", email: "sw@gmail.com", password: "password2", password_confirmation: "password2"
+      )
+
+      user.save
+
+      login = user.authenticate_with_credentials("sw@gmail.com", "password2")
+
+      expect(user.email).to eq(login.email)
+    end
+
+    it "returns nil when the user is not authenticated" do
+
+      user = User.new(first_name: "Steve", last_name: "Willsmore", email: "sw@gmail.com", password: "password2", password_confirmation: "password2"
+      )
+
+      user.save
+
+      login = user.authenticate_with_credentials("steve@outlook.com", "password2")
+
+      expect(login).to be_nil
+    end
+
+    it "is valid when the email address has spaces before or after" do
+
+      user = User.new(first_name: "Steve", last_name: "Willsmore", email: "sw@gmail.com", password: "password2", password_confirmation: "password2"
+      )
+
+      user.save
+
+      login = user.authenticate_with_credentials("    sw@gmail.com  ", "password2")
+
+      expect(user.email).to eq(login.email)
+    end
+
+    it "is valid when the email address is entered with the wrong case" do
+
+      user = User.new(first_name: "Steve", last_name: "Willsmore", email: "sw@gmail.com", password: "password2", password_confirmation: "password2"
+      )
+
+      user.save
+
+      login = user.authenticate_with_credentials("SW@gmail.CoM", "password2")
+
+      expect(user.email).to eq(login.email)
+    end
+
+  end
 end
