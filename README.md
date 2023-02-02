@@ -2,6 +2,14 @@
 
 A mini e-commerce application built with Rails 6.1 for purposes of teaching Rails by example.
 
+## Project Purpose
+
+- Become familiar with Ruby and the Rails framework
+- Learn how to navigate an existing code-base
+- Use existing code style and approach to implement new features in unfamiliar territory
+- Apply previous learning tactics to research and become familiar with a new paradigm, language and \* framework
+- A simulation of the real world where feature and bug-fix requests are listed instead of step-by-step instructions on how to implement a solution
+
 ## Final Product
 
 !["Screenshot of Home page"](https://github.com/willsmores/jungle-rails/blob/master/img/jungle-home-page.PNG?raw=true)
